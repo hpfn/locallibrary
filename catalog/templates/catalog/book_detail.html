@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Title: {{ book.title }}</h1>
+
+    <p><strong>Author:</strong> <a href="">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
+    <p><strong>Summary:</strong> {{ book.summary }}</p>
+    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+    
+    <p><strong>Language:</strong>{% for language in book.language.all %} {{ language }}{% if not forloop.last %}}, {% endif %}{% endfor %}</p>
+    
+    <p><strong>Topic:</strong>{% for topic in book.topic.all %} {{ topic }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    
+    <div style="margin-left:20px;margin-top:20px">
+	    <h4>PDF file</h4>
+	    /media/{{ book.ebook }}
+    </div>
+{% endblock %}
