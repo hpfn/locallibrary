@@ -10,9 +10,17 @@
     </pre>
     <p><strong>ISBN:</strong> {{ book.isbn }}</p>
     
-    <p><strong>Language:</strong>{% for language in book.language.all %} {{ language }}{% if not forloop.last %}}, {% endif %}{% endfor %}</p>
+    <p><strong>Language:</strong>
+        {% for language in book.language.all %}
+        {{ language }}{% if not forloop.last %}}, {% endif %}
+        {% endfor %}
+    </p>
     
-    <p><strong>Topic:</strong>{% for topic in book.topic.all %} {{ topic }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p><strong>Topic:</strong>
+        {% for topic in book.topic.all %}
+        {{ topic }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
     
     <div style="margin-left:20px;margin-top:20px">
 	    <h4>PDF file</h4>
