@@ -1,29 +1,35 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% block content %}
-<h1>Title: {{ book.title }}</h1>
-
-    <p><strong>Author:</strong> <a href="">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
-    <strong>Summary:</strong>
-    <pre>
-        {{ book.summary }}
-    </pre>
-    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-    
-    <p><strong>Language:</strong>
-        {% for language in book.language.all %}
-        {{ language }}{% if not forloop.last %}}, {% endif %}
-        {% endfor %}
-    </p>
-    
-    <p><strong>Topic:</strong>
-        {% for topic in book.topic.all %}
-        {{ topic }}{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-    </p>
-    
-    <div style="margin-left:20px;margin-top:20px">
-	    <h4>PDF file</h4>
-        <a href="/media/{{ book.ebook }}">/media/{{ book.ebook }}</a>
-    </div>
+<table>
+    <!-- <td><img src="{% static '{{ book.image }}' %}" /></td> -->
+    <td><img src="/media/{{ book.image }}" /></td>
+    <td>
+        <ul>
+            <h1>Title: {{ book.title }}</h1>
+            <!-- author detail link not yet defined -->
+            <p><strong>Author:</strong> <a href="">{{ book.author }}</a></p>
+            <strong>Summary:</strong>
+            <pre>
+                {{ book.summary }}
+            </pre>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            <p><strong>Language:</strong>
+                {% for language in book.language.all %}
+                {{ language }}{% if not forloop.last %}}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Topic:</strong>
+                {% for topic in book.topic.all %}
+                {{ topic }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <div style="margin-left:20px;margin-top:20px">
+                <h4>PDF file</h4>
+                <a href="/media/{{ book.ebook }}">/media/{{ book.ebook }}</a>
+            </div>
+        </ul>
+    </td>
+</table>
 {% endblock %}
