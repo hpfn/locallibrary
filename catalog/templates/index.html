@@ -11,8 +11,16 @@
 
 <ul>
 	<li><strong>Books:</strong> {{ num_books }}</li>
-	<li><strong>Languages:</strong> {{ num_languages }}</li>
-	<li><strong>Topics:</strong> {{ num_topics }}
+	<li><strong>Languages:</strong>
+		{% for prog_lang in num_languages %}
+		{{ prog_lang }}
+		{% endfor %}
+	</li>
+	<li><strong>Topics:</strong>
+		{% for topic in num_topics %}
+		{{ topic }}
+	    {% endfor %}
+	</li>
 	<li><strong>Authors:</strong> {{ num_authors }}</li>
 </ul>
 {% endblock %}
