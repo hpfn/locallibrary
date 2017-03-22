@@ -41,6 +41,7 @@ class Book(models.Model):
     # books (in practice a book might have multiple authors, but not in this 
     # implementation!)
     ebook = models.FileField(upload_to='documents/', default='ebook_XXX.pdf')
+    image = models.FileField(upload_to='img/', default='ebook_img.jpeg')
 
     def __str__(self):
         """ Representing the Model object """
