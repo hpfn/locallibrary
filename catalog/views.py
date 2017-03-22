@@ -11,8 +11,11 @@ def index(request):
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
     num_authors = Author.objects.count() # The 'all()' is implied by default. ?
-    num_languages = Language.objects.count()
-    num_topics = Topic.objects.count()
+    prog_lang = Language.objects.values_list('language')
+    topics = Topic.objects.values_list('topic')
+
+    num_languages = [pl[0] for pl in prog_lang]
+    num_topics = [t[0] for t in topics]
 
     template_name = 'index.html'
     context = {
