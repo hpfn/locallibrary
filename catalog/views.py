@@ -10,7 +10,7 @@ def index(request):
     """
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
-    num_authors = Author.objects.count() # The 'all()' is implied by default. ?
+    num_authors = Author.objects.count()  # The 'all()' is implied by default. ?
     prog_lang = Language.objects.values_list('language')
     topics = Topic.objects.values_list('topic')
 
@@ -19,14 +19,15 @@ def index(request):
 
     template_name = 'index.html'
     context = {
-            'num_books': num_books,
-            'num_authors': num_authors,
-            'num_languages': num_languages,
-            'num_topics': num_topics,
+        'num_books': num_books,
+        'num_authors': num_authors,
+        'num_languages': num_languages,
+        'num_topics': num_topics,
     }
 
     # Render the HTML template index.html with the data in the context variabl
     return render(request, template_name, context)
+
 
 # class-based view: tutorial 6
 # Django best-practice
@@ -34,6 +35,6 @@ class BookListView(generic.ListView):
     model = Book
     paginate_by = 10
 
+
 class BookDetailView(generic.DetailView):
     model = Book
-
