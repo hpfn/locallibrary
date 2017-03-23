@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
-{% load static %}
 {% block content %}
 <table>
-    <!-- <td><img src="{% static '{{ book.image }}' %}" /></td> -->
-    <td><img src="/media/{{ book.image }}" /></td>
+    <td><img src="{{ book.image.url }}" /></td>
     <td>
         <ul>
             <h1>Title: {{ book.title }}</h1>
@@ -27,7 +25,7 @@
             </p>
             <div style="margin-left:20px;margin-top:20px">
                 <h4>PDF file</h4>
-                <a href="/media/{{ book.ebook }}">/media/{{ book.ebook }}</a>
+                <a href="{{ book.ebook.url }}">/media/{{ book.ebook }}</a>
             </div>
         </ul>
     </td>
