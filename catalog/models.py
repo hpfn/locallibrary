@@ -1,5 +1,6 @@
 from django.db import models
-from django.urls import reverse # used to generate URLs by reversing
+from django.urls import reverse  # used to generate URLs by reversing
+
 
 # Create your models here.
 class Language(models.Model):
@@ -9,6 +10,7 @@ class Language(models.Model):
     def __str__(self):
         """ String for representing the Model object """
         return self.language
+
 
 class Topic(models.Model):
     """ topic (OOP, Forensis, ALgorithms, etc """
@@ -26,13 +28,13 @@ class Book(models.Model):
     # Author as a string rather than object because it hasn't been declared ye
     # on_delete=models.SET_NULL, which will set the value of the author to 
     # Null if the associated author record is deleted.
-    summary = models.TextField(max_length=1000, 
-    help_text="Enter a brief description")
-    isbn = models.CharField('ISBN',max_length=13, help_text='13 Character')
-    language = models.ManyToManyField(Language, 
-    help_text="Select a programming language for this book")
-    topic = models.ManyToManyField(Topic, 
-    help_text="Select a topic for this book")
+    summary = models.TextField(max_length=1000,
+                               help_text="Enter a brief description")
+    isbn = models.CharField('ISBN', max_length=13, help_text='13 Character')
+    language = models.ManyToManyField(Language,
+                                      help_text="Select a programming language for this book")
+    topic = models.ManyToManyField(Topic,
+                                   help_text="Select a topic for this book")
     # ManyToManyField used because genre can contain many books.
     # Genre class has already been defined so we can specify the object above.
     # The genre is a ManyToManyField, so that a book can have multiple genres
@@ -62,8 +64,8 @@ class Book(models.Model):
         Creates a string for the Language. This is required to display 
         language in Admin
         """
-        return ', '.join([ language.language 
-            for language in self.language.all()[:5] ])
+        return ', '.join([language.language
+                          for language in self.language.all()[:5]])
 
     display_language.short_description = 'Language'
 
@@ -72,13 +74,14 @@ class Book(models.Model):
         Creates a string for the Topic. This is required to display 
         topic in Admin
         """
-        return ', '.join([ topic.topic
-            for topic in self.topic.all()[:15] ])
+        return ', '.join([topic.topic
+                          for topic in self.topic.all()[:15]])
 
     display_topic.short_description = 'Topic'
-    
-#import uuid # Required for unique book instances
-#class BookInstance(models.Model):
+
+
+# import uuid # Required for unique book instances
+# class BookInstance(models.Model):
 #    """
 #    Model representing a specific copy of a book (i.e. that can be borrowed fr
 #    """
@@ -112,17 +115,15 @@ class Author(models.Model):
     """
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    
+
     def get_absolute_url(self):
         """
         Returns the url to access a particular author instance.
         """
         return reverse('author-detail', args=[str(self.id)])
-    
+
     def __str__(self):
         """
         String for representing the Model object.
         """
         return '%s, %s' % (self.last_name, self.first_name)
-
-
