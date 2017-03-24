@@ -1,7 +1,7 @@
 # locallibrary
 mozilla tutorial - local library
 
-I just add:
+I just added:
 
     - upload a jpeg file to be used on detail page
     - upload a pdf file
