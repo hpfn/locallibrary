@@ -87,3 +87,15 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# image files
+*.jpeg
+
+# BD
+db.sqlite3
+
+# upload media files
+media
+
+# conf file
+locallibrary_nginx.conf
