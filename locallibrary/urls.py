@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='/catalog', permanent=True)),
     # url(r'^media/documents/(?P<pdf_file>[-\w]+\.pdf)$', show_pdf, name='show_pdf'),
     #url(r'^media/documents/(?P<pdf_file>.*)$', show_pdf, name='show_pdf'),
-    url(r'^locallibrary/(?P<pdf_file>.*)$', show_pdf, name='show_pdf'),
+    url(r'^locallibrary/(?P<book_title>.*)$', show_pdf, name='show_pdf'),
     url(r'^media/(?P<path>.*\.jpeg)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]
 
