@@ -99,3 +99,5 @@ media
 
 # conf file
 locallibrary_nginx.conf
+
+.idea
