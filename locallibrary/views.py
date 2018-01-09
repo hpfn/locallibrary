@@ -13,6 +13,8 @@ def show_pdf(request, book_title):
     #from django.conf import settings
     #path_to_pdf = settings.MEDIA_ROOT + '/documents/' + pdf_file
     with open(path_to_pdf, 'rb') as ebook:
-        response = HttpResponse(ebook.read(), content_type='application/pdf')
-        response['Content-Disposition'] = "inline; filename=" + book_title.replace(' ', '_')
-        return response
+        read_ebook = ebook.read()
+
+    response = HttpResponse(read_ebook, content_type='application/pdf')
+    response['Content-Disposition'] = "inline; filename=" + book_title.replace(' ', '_')
+    return response
