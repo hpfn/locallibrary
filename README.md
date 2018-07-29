@@ -1,3 +1,6 @@
+[![Updates](https://pyup.io/repos/github/hpfn/locallibrary/shield.svg)](https://pyup.io/repos/github/hpfn/locallibrary/)
+[![Python 3](https://pyup.io/repos/github/hpfn/locallibrary/python-3-shield.svg)](https://pyup.io/repos/github/hpfn/locallibrary/)
+
 # locallibrary
 mozilla tutorial - local library
 
