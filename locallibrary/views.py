@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 
 
@@ -8,10 +7,10 @@ def show_pdf(request, book_title):
     from catalog.models import Book
     # file = Book.objects.get(title='TITLE HERE')
     file = Book.objects.get(title=book_title)
-    #print(file.ebook.path)
+    # print(file.ebook.path)
     path_to_pdf = file.ebook.path
-    #from django.conf import settings
-    #path_to_pdf = settings.MEDIA_ROOT + '/documents/' + pdf_file
+    # from django.conf import settings
+    # path_to_pdf = settings.MEDIA_ROOT + '/documents/' + pdf_file
     with open(path_to_pdf, 'rb') as ebook:
         read_ebook = ebook.read()
 
