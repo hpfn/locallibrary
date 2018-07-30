@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import path, re_path, include
 from django.contrib import admin
 from django.views.generic import RedirectView
 from django.conf import settings
@@ -24,13 +24,13 @@ from locallibrary.views import show_pdf
 #my_app = 'locallibrary'
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^catalog/', include('catalog.urls')),
-    url(r'^$', RedirectView.as_view(url='/catalog', permanent=True)),
+    path('admin/', admin.site.urls),
+    path('catalog/', include('catalog.urls')),
+    path('', RedirectView.as_view(url='/catalog', permanent=True)),
     # url(r'^media/documents/(?P<pdf_file>[-\w]+\.pdf)$', show_pdf, name='show_pdf'),
     #url(r'^media/documents/(?P<pdf_file>.*)$', show_pdf, name='show_pdf'),
-    url(r'^locallibrary/(?P<book_title>.*)$', show_pdf, name='show_pdf'),
-    url(r'^media/(?P<path>.*\.jpeg)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path('locallibrary/(?P<book_title>.*)$', show_pdf, name='show_pdf'),
+    re_path(r'^media/(?P<path>.*\.jpeg)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)

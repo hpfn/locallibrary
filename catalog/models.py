@@ -45,6 +45,9 @@ class Book(models.Model):
     ebook = models.FileField(upload_to='documents/', default='ebook_XXX.pdf')
     image = models.FileField(upload_to='img/', default='ebook_img.jpeg')
 
+    class Meta:
+        ordering = ('title',)
+
     def __str__(self):
         """ Representing the Model object """
         return self.title
@@ -115,6 +118,9 @@ class Author(models.Model):
     """
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+
+    class Meta:
+        ordering = ('last_name',)
 
     def get_absolute_url(self):
         """
