@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.urls import reverse  # used to generate URLs by reversing
 
@@ -42,8 +43,10 @@ class Book(models.Model):
     # so each book will only have only one author, but an author may have many
     # books (in practice a book might have multiple authors, but not in this 
     # implementation!)
-    ebook = models.FileField(upload_to='documents/', default='ebook_XXX.pdf')
-    image = models.FileField(upload_to='img/', default='ebook_img.jpeg')
+    ebook = models.FileField(upload_to='documents/',
+                             validators=[FileExtensionValidator(['pdf'], 'Apenas arquivos PDF')],
+                             default='ebook_XXX.pdf')
+    image = models.ImageField(upload_to='img/', default='ebook_img.jpeg')
 
     class Meta:
         ordering = ('title',)
